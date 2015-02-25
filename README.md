@@ -30,8 +30,8 @@ var domlight = new DomLight({
 
 You can highlight multiple elements by providing a `NodeList` to `highlightAll()`. The highlight can be removed using `unlightAll()`.
 ```javascript
-domlight.highlightAll(document.querySelector('#my-list li'));
-domlight.unlightAll(document.querySelector('#my-list li'));
+domlight.highlightAll(document.querySelectorAll('#my-list li'));
+domlight.unlightAll(document.querySelectorAll('#my-list li'));
 ```
 
 Changelog
