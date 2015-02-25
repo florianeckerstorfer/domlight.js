@@ -1,0 +1,23 @@
+{
+  "name": "domlight",
+  "version": "1.0.0",
+  "description": "Library to highlight DOM elements.",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/florianeckerstorfer/domlight.js.git"
+  },
+  "keywords": [
+    "dom",
+    "highlight",
+    "select"
+  ],
+  "author": "Florian Eckerstorfer <florian@eckerstorfer.co> (https://florian.ec)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/florianeckerstorfer/domlight.js/issues"
+  },
+  "homepage": "https://github.com/florianeckerstorfer/domlight.js"
+}
