@@ -8,6 +8,12 @@ Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 Installation
 ------------
 
+You can install **domlight.js** using NPM:
+
+```shell
+npm install domlight.js
+```
+
 
 Usage
 -----
