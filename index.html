@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Domlight.js by florianeckerstorfer</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Domlight.js</h1>
+        <p>Library to highlight DOM elements.</p>
+
+        <p class="view"><a href="https://github.com/florianeckerstorfer/domlight.js">View the Project on GitHub <small>florianeckerstorfer/domlight.js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/florianeckerstorfer/domlight.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/florianeckerstorfer/domlight.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/florianeckerstorfer/domlight.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="" class="anchor" href="#" aria-hidden="true"><span class="octicon octicon-link"></span></a><img src="https://raw.githubusercontent.com/florianeckerstorfer/domlight.js/master/docs/domlightjs.png" alt="domlight.js">
+</h1>
+
+<blockquote>
+<p><strong>domlight.js</strong> is a library to highlight DOM elements.</p>
+</blockquote>
+
+<p>Developed by <a href="https://florian.ec">Florian Eckerstorfer</a> in Vienna, Europe.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Use the <code>highlight()</code> and <code>unlight()</code> methods of the <code>DomLight</code> object to highlight an element or remove the highlight.</p>
+
+<div class="highlight highlight-javascript"><pre>domlight.highlight(<span class="pl-s3">document</span>.querySelector(<span class="pl-s1"><span class="pl-pds">'</span>#elem1<span class="pl-pds">'</span></span>));
+domlight.unlight(<span class="pl-s3">document</span>.querySelector(<span class="pl-s1"><span class="pl-pds">'</span>#elem1<span class="pl-pds">'</span></span>));</pre></div>
+
+<p>You can change the color and style of the highlight by passing an settings object to the constructor:</p>
+
+<div class="highlight highlight-javascript"><pre>domlight.highlight(<span class="pl-s3">document</span>.querySelector(<span class="pl-s1"><span class="pl-pds">'</span>#elem1<span class="pl-pds">'</span></span>), {
+    <span class="pl-s1"><span class="pl-pds">'</span>borderColor<span class="pl-pds">'</span></span><span class="pl-k">:</span>     <span class="pl-s1"><span class="pl-pds">'</span>rgba(126, 211, 33, 0.7)<span class="pl-pds">'</span></span>,
+    <span class="pl-s1"><span class="pl-pds">'</span>backgroundColor<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s1"><span class="pl-pds">'</span>rgba(126, 211, 33, 0.2)<span class="pl-pds">'</span></span>,
+    <span class="pl-s1"><span class="pl-pds">'</span>borderWidth<span class="pl-pds">'</span></span><span class="pl-k">:</span>     <span class="pl-c1">1</span>
+});</pre></div>
+
+<p>You can highlight multiple elements by providing a <code>NodeList</code> to <code>highlightAll()</code>. The highlight can be removed using <code>unlightAll()</code>.</p>
+
+<div class="highlight highlight-javascript"><pre>domlight.highlightAll(<span class="pl-s3">document</span>.querySelectorAll(<span class="pl-s1"><span class="pl-pds">'</span>#my-list li<span class="pl-pds">'</span></span>));
+domlight.unlightAll(<span class="pl-s3">document</span>.querySelectorAll(<span class="pl-s1"><span class="pl-pds">'</span>#my-list li<span class="pl-pds">'</span></span>));</pre></div>
+
+<h2>
+<a id="changelog" class="anchor" href="#changelog" aria-hidden="true"><span class="octicon octicon-link"></span></a>Changelog</h2>
+
+<p><em>No version released yet.</em></p>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>The MIT license applies to domlight.js. For the full copyright and license information, please view the LICENSE file distributed with this source code.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/florianeckerstorfer">florianeckerstorfer</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
