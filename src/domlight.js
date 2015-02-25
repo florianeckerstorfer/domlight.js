@@ -1,46 +1,67 @@
-var DomLight = function (options) {
-    this.settings = {
+(function(factory) {
+    // Support three module loading scenarios
+    if (typeof require === 'function' && typeof exports === 'object' && typeof module === 'object') {
+        // [1] CommonJS/Node.js
+        var target = module['exports'] || exports; // module.exports is for Node.js
+        factory(target, require);
+    } else if (typeof define === 'function' && define['amd']) {
+        // [2] AMD anonymous module
+        define(['exports', 'require'], factory);
+    } else {
+        // [3] No module loader (plain <script> tag) - put directly in global namespace
+        factory(window['domlight'] = {});
+    }
+}(function(domlightExports, require){
+    var domlight = typeof domlightExports !== 'undefined' ? domlightExports : {};
+
+    domlight.defaultOptions = {
         'borderWidth': 3,
         'borderColor': 'rgba(255, 0, 0, 0.7)',
         'backgroundColor': 'rgba(255, 0, 0, 0)'
     };
-    for (var attrname in options) {
-        this.settings[attrname] = options[attrname];
-    }
 
-    this.highlights = [];
+    domlight.highlights = [];
 
-    this.highlight = function (element) {
-        this.unlight(element);
-        var highlight = this.createHighlightElement(this.computePosition(element), this.settings);
+    domlight.getOptions = function (options) {
+        var newOptions = domlight.defaultOptions;
+        for (var attrname in options) {
+            newOptions[attrname] = options[attrname];
+        }
+
+        return newOptions;
+    };
+
+    domlight.highlight = function (element, options) {
+        domlight.unlight(element);
+        var highlight = domlight.createHighlightElement(domlight.computePosition(element), domlight.getOptions(options));
         document.querySelector('body').appendChild(highlight);
 
-        this.highlights.push({'element': element, 'highlight': highlight});
+        domlight.highlights.push({'element': element, 'highlight': highlight});
     };
 
-    this.highlightAll = function (elements) {
+    domlight.highlightAll = function (elements, options) {
         for (var i = 0; i < elements.length; i++) {
-            this.highlight(elements[i]);
+            domlight.highlight(elements[i], options);
         }
     };
 
-    this.unlight = function (element) {
-        var index = this.getHighlightIndex(element);
+    domlight.unlight = function (element) {
+        var index = domlight.getHighlightIndex(element);
         if (index !== null) {
-            document.querySelector('body').removeChild(this.highlights[index].highlight);
-            this.highlights[index] = null;
+            document.querySelector('body').removeChild(domlight.highlights[index].highlight);
+            domlight.highlights[index] = null;
         }
     }
 
-    this.unlightAll = function (elements) {
+    domlight.unlightAll = function (elements) {
         for (var i = 0; i < elements.length; i++) {
-            this.unlight(elements[i]);
+            domlight.unlight(elements[i]);
         }
     };
 
-    this.getHighlightIndex = function (element) {
-        for (var i = 0; i < this.highlights.length; i++) {
-            if (this.highlights[i] && this.highlights[i].element === element) {
+    domlight.getHighlightIndex = function (element) {
+        for (var i = 0; i < domlight.highlights.length; i++) {
+            if (domlight.highlights[i] && domlight.highlights[i].element === element) {
                 return i;
             }
         }
@@ -48,7 +69,7 @@ var DomLight = function (options) {
         return null;
     }
 
-    this.computePosition = function (element) {
+    domlight.computePosition = function (element) {
         var range = document.createRange();
         range.selectNode(element);
         var rect = range.getBoundingClientRect();
@@ -63,7 +84,7 @@ var DomLight = function (options) {
         };
     };
 
-    this.createHighlightElement = function (position, options) {
+    domlight.createHighlightElement = function (position, options) {
         var elem = document.createElement('div');
         elem.appendChild(document.createTextNode(' '));
         elem.style.borderWidth = options.borderWidth+'px'
@@ -78,4 +99,4 @@ var DomLight = function (options) {
 
         return elem;
     }
-};
+}));
