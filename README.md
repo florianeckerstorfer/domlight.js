@@ -5,7 +5,21 @@
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 
+Installation
+------------
+
+
+Usage
+-----
+
+
 Changelog
 ---------
 
+*No version released yet.*
+
 License
+--------
+
+The MIT license applies to domlight.js. For the full copyright and license information, please view the LICENSE file distributed with this source code.
+
