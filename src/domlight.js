@@ -18,6 +18,12 @@ var DomLight = function (options) {
         this.highlights.push({'element': element, 'highlight': highlight});
     };
 
+    this.highlightAll = function (elements) {
+        for (var i = 0; i < elements.length; i++) {
+            this.highlight(elements[i]);
+        }
+    };
+
     this.unlight = function (element) {
         var index = this.getHighlightIndex(element);
         if (index !== null) {
@@ -25,6 +31,12 @@ var DomLight = function (options) {
             this.highlights[index] = null;
         }
     }
+
+    this.unlightAll = function (elements) {
+        for (var i = 0; i < elements.length; i++) {
+            this.unlight(elements[i]);
+        }
+    };
 
     this.getHighlightIndex = function (element) {
         for (var i = 0; i < this.highlights.length; i++) {
