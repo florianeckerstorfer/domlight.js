@@ -11,7 +11,6 @@
     } else {
         // [3] No module loader (plain <script> tag) - put directly in global namespace
         window.Domlight = factory();
-        console.log(window.Domlight);
     }
 }(window, function factory() {
     var Domlight = function(options) {
