@@ -53,10 +53,9 @@
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
 <script src="node_modules/domlight.js/src/domlight.js"></script>
 <script>
+    var domlight = new Domlight({'borderColor': 'rgba(208, 2, 27, 1)'});
     document.querySelector('#highlight-hello1').onclick = function () {
-        domlight.highlight(document.querySelector('.demo li:first-child a'), {
-            'borderColor': 'rgba(208, 2, 27, 1)'
-        });
+        domlight.highlight(document.querySelector('.demo li:first-child a'));
     };
     document.querySelector('#unlight-hello1').onclick = function () {
         domlight.unlight(document.querySelector('.demo li:first-child a'));
@@ -72,7 +71,7 @@
     };
     document.querySelector('#unlight-ipsum').onclick = function () {
         domlight.unlightAll(document.querySelectorAll('.ipsum'));
-    }
+    };
 </script>
 </body>
 </html>
