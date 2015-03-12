@@ -15,7 +15,11 @@
 }(window, function factory() {
     var Domlight = function(options) {
         this.highlights = [];
-        this.options = this.constructor.defaultOptions;
+        this.options = {};
+        this.idCounter = 0;
+        for (var attrname in this.constructor.defaultOptions) {
+            this.options[attrname] = this.constructor.defaultOptions[attrname];
+        }
         for (var attrname in options) {
             this.options[attrname] = options[attrname];
         }
@@ -81,7 +85,12 @@
     };
 
     Domlight.prototype.createHighlightElement = function (position, options) {
-        var elem = document.createElement('div');
+        var that = this,
+            elem = document.createElement('div'),
+            overElement;
+        elem.className = 'domlight__highlight';
+        elem.id = 'domlight__highlight__'+this.idCounter;
+        this.idCounter++;
         elem.appendChild(document.createTextNode(' '));
         elem.style.borderWidth = options.borderWidth+'px'
         elem.style.borderColor = options.borderColor;
@@ -92,9 +101,48 @@
         elem.style.top = (position.y1-options.borderWidth)+'px';
         elem.style.width = (position.x2-position.x1)+'px';
         elem.style.height = (position.y2-position.y1)+'px';
+        elem.addEventListener('mousemove', function (e) {
+            that.hideHighlights();
+            var target = document.elementFromPoint(e.clientX, e.clientY);
+            that.fireEvent(target, 'mousemove');
+            that.showHighlights();
+        });
+        elem.addEventListener('click', function (e) {
+            console.log('domlight click first', e);
+            that.hideHighlights();
+            var target = document.elementFromPoint(e.clientX, e.clientY);
+            that.fireEvent(target, 'click');
+            that.showHighlights();
+        }, false);
 
         return elem;
     }
+
+    Domlight.prototype.hideHighlights = function() {
+        var lights = document.querySelectorAll('.domlight__highlight');
+        for (var i = lights.length - 1; i >= 0; i--) {
+            lights[i].style.display = 'none';
+        };
+    };
+
+    Domlight.prototype.showHighlights = function() {
+        var lights = document.querySelectorAll('.domlight__highlight');
+        for (var i = lights.length - 1; i >= 0; i--) {
+            lights[i].style.display = 'block';
+        };
+    };
+
+    Domlight.prototype.fireEvent = function(element, event) {
+        // http://stackoverflow.com/a/143771/776654
+        if (document.createEvent) { // Dispatch for everything not IE
+            var e = document.createEvent("HTMLEvents");
+            e.initEvent(event, true, true); // event type, bubbling, cancelable
+            return !element.dispatchEvent(e);
+        } else { // Dispatch for IE
+            var e = document.createEventObject();
+            return element.fireEvent('on'+event, e);
+        }
+    };
 
     return Domlight;
 }));
