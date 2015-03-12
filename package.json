@@ -19,5 +19,11 @@
   "bugs": {
     "url": "https://github.com/florianeckerstorfer/domlight.js/issues"
   },
-  "homepage": "https://github.com/florianeckerstorfer/domlight.js"
+  "homepage": "https://github.com/florianeckerstorfer/domlight.js",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-concat": "^2.5.2",
+    "gulp-sourcemaps": "^1.5.0",
+    "gulp-uglifyjs": "^0.6.1"
+  }
 }
