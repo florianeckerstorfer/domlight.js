@@ -1,6 +1,6 @@
 {
   "name": "domlight.js",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Library to highlight DOM elements.",
   "directories": {
     "doc": "docs"
