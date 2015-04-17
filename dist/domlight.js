@@ -102,6 +102,7 @@
         elem.style.top = (position.y1-options.borderWidth)+'px';
         elem.style.width = (position.x2-position.x1)+'px';
         elem.style.height = (position.y2-position.y1)+'px';
+        elem.style.zIndex = 100000;
         elem.addEventListener('mousemove', function (e) {
             that.hideHighlights();
             var target = document.elementFromPoint(e.clientX, e.clientY);
