@@ -1,7 +1,7 @@
 var gulp = require('gulp')
     concat      = require('gulp-concat')
     sourcemaps  = require('gulp-sourcemaps'),
-    uglify      = require('gulp-uglifyjs');
+    uglify      = require('gulp-uglify');
 
 var scripts = [
     './src/module-pre.js',
@@ -17,7 +17,8 @@ gulp.task('js-dist', function () {
     gulp.src(scripts)
         .pipe(concat('domlight.js'))
         .pipe(gulp.dest('./dist'))
-        .pipe(uglify('domlight.min.js'))
+        .pipe(concat('domlight.min.js'))
+        .pipe(uglify())
         .pipe(gulp.dest('./dist'));
 });
 
